@@ -1,4 +1,7 @@
 // blocktree.ts
+
+import * as fs from 'fs';
+
 import { Block } from './block';
 import { Transaction } from './transaction';
 
@@ -56,6 +59,29 @@ export class Blocktree {
 
       return state;
     }
+    return null;
+  }
+  saveToFile(filepath: string): void {
+    const data = JSON.stringify(this.blocks);
+    fs.writeFileSync(filepath, data);
+  }
+
+  static loadFromFile(filepath: string): Blocktree | null {
+    if (fs.existsSync(filepath)) {
+      const data = fs.readFileSync(filepath, 'utf-8');
+      const blocksData = JSON.parse(data);
+      const blocktree = new Blocktree();
+
+      blocktree.blocks = blocksData.map((blockData: any) => {
+        const block = new Block(blockData.index, blockData.transactions, blockData.parentHash);
+        block.timestamp = blockData.timestamp;
+        block.hash = blockData.hash;
+        return block;
+      });
+
+      return blocktree;
+    }
+
     return null;
   }
 }

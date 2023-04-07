@@ -1,0 +1,5 @@
+sconfig.json
+tsconfig.prod.json
+*.ts
+*.map
+blocktree.json
