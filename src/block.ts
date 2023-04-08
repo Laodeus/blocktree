@@ -1,5 +1,6 @@
 // block.ts
 import { Transaction } from './transaction';
+import * as crypto from 'crypto';
 
 export class Block {
   index: number;
@@ -10,14 +11,19 @@ export class Block {
 
   constructor(index: number, transactions: Transaction[], parentHash: string) {
     this.index = index;
-    this.timestamp = Date.now();
+    this.timestamp = Date.now(); 
     this.transactions = transactions;
     this.parentHash = parentHash;
     this.hash = this.calculateHash();
   }
 
   calculateHash(): string {
-    // Calculer le hash du bloc ici
-    return '';
+    const hasher = crypto.createHash('sha256');
+    hasher.update(`${this.index}${this.timestamp}${JSON.stringify(this.transactions)}${this.parentHash}`);
+    return hasher.digest('hex');
+  }
+
+  isValid(): boolean {
+    return this.calculateHash() === this.hash;
   }
 }

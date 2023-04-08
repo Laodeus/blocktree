@@ -15,11 +15,20 @@ export class Blocktree {
     this.blocks = [this.genesisBlock];
   }
 
-  addBlock(transactions: Transaction[], parentHash: string): Block {
+  addBlock(transactions: Transaction[], parentHash: string): Block | null {
+    if (!this.validateParentHash(parentHash)) {
+      return null;
+    }
+
     const newIndex = this.blocks.length;
     const newBlock = new Block(newIndex, transactions, parentHash);
     this.blocks.push(newBlock);
     return newBlock;
+  }
+
+  validateParentHash(parentHash: string): boolean {
+    const parentBlock = this.blocks.find((block) => block.hash === parentHash);
+    return !!parentBlock;
   }
 
   getFinalState(blockIndex: number): { [key: string]: string | null } {
@@ -83,5 +92,27 @@ export class Blocktree {
     }
 
     return null;
+  }
+
+  isValidBlock(newBlock: Block): boolean {
+    // Vérifier si l'index du nouveau bloc est correct
+    const parentBlock = this.getBlock(newBlock.index - 1);
+    if (!parentBlock) {
+      return false;
+    }
+
+    // Vérifier si le parentHash correspond au hash du bloc parent
+    if (newBlock.parentHash !== parentBlock.hash) {
+      return false;
+    }
+
+    // Vérifier si le hash du bloc est correct
+    if (!newBlock.isValid()) {
+      return false;
+    }
+
+    // Vous pouvez ajouter d'autres vérifications ici, par exemple pour valider les transactions
+
+    return true;
   }
 }

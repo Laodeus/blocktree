@@ -1,4 +1,5 @@
 // transaction.ts
+
 export class Transaction {
     key: string;
     value: string | null;
