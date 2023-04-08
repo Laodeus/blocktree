@@ -5,6 +5,8 @@ import * as fs from 'fs';
 import { Block } from './block';
 import { Transaction } from './transaction';
 
+
+
 export class Blocktree {
   genesisBlock: Block;
   blocks: Block[];
