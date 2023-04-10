@@ -1,6 +1,6 @@
 import { test, expect } from '@jest/globals';
-import { Block } from './block';
-import { Transaction } from './transaction';
+import { Block } from '../src/block';
+import { Transaction } from '../src/transaction';
 
 test('Crée un nouvel objet Block', () => {
   const index = 1;

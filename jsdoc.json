@@ -1,0 +1,17 @@
+{
+    "source": {
+        "include": [
+            "src"
+        ],
+        "includePattern": ".+\\.ts$"
+    },
+    "opts": {
+        "recurse": true,
+        "destination": "docs",
+        "template": "node_modules/jsdoc-baseline",
+        "plugins": [
+            "plugins/markdown",
+            "node_modules/jsdoc-typescript-plugin"
+        ]
+    }
+}

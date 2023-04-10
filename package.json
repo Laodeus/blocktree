@@ -1,5 +1,5 @@
 {
-  "name": "blocktree",
+  "name": "blktree",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,8 @@
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "build": "tsc",
     "tdd": "nodemon --watch src --ext ts --exec 'clear && yarn test'",
-    "commit": "git add . && git commit -m 'auto autocommit'"
+    "commit": "git add . && git commit -m 'auto autocommit'",
+    "docs": "npx typedoc src/*.tsnpx typedoc src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +17,6 @@
     "@types/node": "^18.15.11",
     "concurrently": "^8.0.1",
     "nodemon": "^2.0.22",
-    "typescript": "^5.0.3",
     "websocket": "^1.0.34",
     "ws": "^8.13.0"
   },
@@ -29,6 +29,8 @@
     "jest": "^29.5.0",
     "prettier": "2.8.7",
     "ts-jest": "^29.1.0",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typedoc": "^0.24.1",
+    "typescript": "^5.0.4"
   }
 }

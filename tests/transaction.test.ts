@@ -1,5 +1,5 @@
 import { test, expect } from '@jest/globals';
-import { Transaction } from './transaction';
+import { Transaction } from '../src/transaction';
 
 test('Crée un nouvel objet Transaction', () => {
   const key = 'cle';

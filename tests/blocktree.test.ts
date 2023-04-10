@@ -1,8 +1,8 @@
 import { test, expect } from '@jest/globals';
 
-import { Blocktree } from './blocktree';
-import { Transaction } from './transaction';
-import { Block } from './block';
+import { Blocktree } from '../src/blocktree';
+import { Transaction } from '../src/transaction';
+import { Block } from '../src/block';
 
 test('Crée un nouvel objet Blocktree avec le bloc Genesis', () => {
   const blocktree = new Blocktree();
