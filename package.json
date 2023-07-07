@@ -1,0 +1,24 @@
+{
+  "name": "blocktree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Laodeus/blocktree.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Laodeus/blocktree/issues"
+  },
+  "homepage": "https://github.com/Laodeus/blocktree#readme",
+  "dependencies": {
+    "tsc": "^2.0.4",
+    "tsc-node": "^0.0.3"
+  }
+}
