@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,14 @@
   },
   "homepage": "https://github.com/Laodeus/blocktree#readme",
   "dependencies": {
+    "crypto-js": "^4.1.1",
+    "nodemon": "^2.0.22",
     "tsc": "^2.0.4",
-    "tsc-node": "^0.0.3"
+    "tsc-node": "^0.0.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.1.1",
+    "@types/uuid": "^9.0.2"
   }
 }

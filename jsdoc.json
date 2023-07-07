@@ -1,0 +1,19 @@
+{
+    "plugins": [
+        "node_modules/tsd-jsdoc/dist/plugin"
+    ],
+    "source": {
+        "include": [
+            "./src"
+        ],
+        "includePattern": ".+\\.ts(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "opts": {
+        "template": "node_modules/minami",
+        "encoding": "utf8",
+        "destination": "./docs/",
+        "recurse": true,
+        "verbose": true
+    }
+}

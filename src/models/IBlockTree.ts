@@ -8,6 +8,7 @@ import { IBlockData } from "./IBlockData";
  */
 export interface IBlockTree {
     genesisBlock: IBlock;
+    blockList : IBlock[]
 
     /**
      * Adds a block to the blocktree.
@@ -15,14 +16,14 @@ export interface IBlockTree {
      * @param {BlockData} blockData - The data for the new block.
      * @returns {boolean} True if the block was successfully added, false otherwise.
      */
-    addBlock(parentId: string, blockData: IBlockData): boolean;
+    addBlock(parentId: string, blockData: IBlockData): IBlock;
 
     /**
      * Gets a specific block by its ID.
      * @param {string} id - The UUID of the block.
      * @returns {IBlock | null} The block with the specified ID, or null if the block was not found.
      */
-    getBlockById(id: string): IBlock | null;
+    getBlockById(id: string): IBlock;
 
     /**
      * Verifies the integrity of the blocktree.
@@ -35,7 +36,7 @@ export interface IBlockTree {
      * @param {string} blockId - The UUID of the starting block.
      * @returns {IBlock[] | null} The chain of blocks, or null if the starting block was not found.
      */
-    getBlockChainToGenesis(blockId: string): IBlock[] | null;
+    getBlockChainToGenesis(blockId: string): IBlock[];
 
     /**
     * Gets all known children of a specified block.
@@ -50,4 +51,10 @@ export interface IBlockTree {
      * @returns {void}
      */
     synchronize(otherBlockTrees: IBlockTree[]): void;
+
+    /**
+     * getter for genesis block
+     * @returns {Iblock}
+     */
+    getGenesis(): IBlock
 }
