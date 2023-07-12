@@ -1,5 +1,4 @@
 import { Block } from "./Block";
-import { BlockData } from "./BlockData";
 
 import { IBlockData } from "./Interfaces/IBlockData";
 import { IBlock } from "./Interfaces/IBlock";
