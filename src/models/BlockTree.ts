@@ -27,16 +27,28 @@ export class BlockTree implements IBlockTree {
     verifyIntegrity = (): boolean => true;
     
     getBlockChainToGenesis = (blockId: string): Block[] => {
-        const blockChain: Block[] = [];
-        let currentBlock = this.getBlockById(blockId);
-    
-        while (currentBlock.previousHash != this.getGenesis().hash) {
-            blockChain.unshift(currentBlock);
-            currentBlock = this.getBlockById(currentBlock.previousHash);
+        const initialBlock = this.getBlockById(blockId);
+        if (!initialBlock) {
+            throw new Error(`Le bloc avec l'id ${blockId} n'existe pas.`);
         }
     
-        return blockChain;
+        const genesisBlock = this.getGenesis();
+        if (!genesisBlock) {
+            throw new Error(`Le bloc de genèse n'existe pas.`);
+        }
+    
+        let currentBlock: Block | null = initialBlock;
+        const blockChain: Block[] = [];
+    
+        while (currentBlock) {
+            blockChain.push(currentBlock);
+            const parentHash: string = currentBlock.previousHash;
+            currentBlock = this.blockList.find((block: Block) => block.hash === parentHash) || null;
+        }
+    
+        return blockChain.reverse(); // Inverse l'ordre de la chaîne
     };
+
 
     getAllKnownChildren = (blockId: string): IBlock[] | null => {
         const children = this.blockList.filter(block => block.previousHash === blockId);
