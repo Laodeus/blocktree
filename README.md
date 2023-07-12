@@ -16,6 +16,40 @@ cd BlockTree
 npm install
 ```
 
+how to use
+
+// Import required classes and enums from the BlockTree module
+import { BlockData } from "blocktree/models/BlockData";
+import { BlockTree } from "blocktree/models/BlockTree";
+import { TransactionType } from "blocktree/models/Interfaces/ITransaction";
+import { Transaction } from "blocktree/models/Transaction";
+import { TransactionPayload } from "blocktree/models/TransactionPayload";
+
+```javascript
+// Create a new BlockTree instance
+const blockTree = new BlockTree([]);
+
+// Create a new transaction for the first block
+const newBlockData1Transaction = new Transaction(
+  TransactionType.ADD,
+  new TransactionPayload(0, undefined, "ok")
+);
+
+// Create data for the first block
+const newBlockData1 = new BlockData(
+  "add first block",
+  [newBlockData1Transaction],
+  "Laodeus"
+);
+
+// Add the first block to the BlockTree
+blockTree.addBlock("", newBlockData1);
+
+// Log the BlockTree
+console.log(JSON.stringify(blockTree));
+
+```
+
 ## Interfaces
 
 ### IBlock

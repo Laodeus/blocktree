@@ -1,5 +1,4 @@
 import { Block } from "./Block";
-
 import { IBlockData } from "./Interfaces/IBlockData";
 import { IBlock } from "./Interfaces/IBlock";
 import { IBlockTree } from "./Interfaces/IBlockTree";
@@ -18,10 +17,13 @@ export class BlockTree implements IBlockTree {
         return newBlock;
 
     };
+
     getBlockById = (id: string): Block => {
         const found =this.blockList.find(block => block.id === id)
         return found || this.getGenesis();
     };
+
+
     verifyIntegrity = (): boolean => true;
     
     getBlockChainToGenesis = (blockId: string): Block[] => {
@@ -35,6 +37,12 @@ export class BlockTree implements IBlockTree {
     
         return blockChain;
     };
-    getAllKnownChildren = (blockId: string): IBlock[] | null => null;
+
+    getAllKnownChildren = (blockId: string): IBlock[] | null => {
+        const children = this.blockList.filter(block => block.previousHash === blockId);
+        return children.length ? children : null;
+    };
+
+
     getGenesis = (): Block => this.blockList[0]
 }
