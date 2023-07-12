@@ -75,4 +75,25 @@ npm install
 | -------- | ---- | ----------- |
 | startIndex | number | The start index for the transaction operation. |
 | length | number (optional) | The length of the section to be affected by the transaction. |
-| content | string (optional) | The content to be added by the transaction. |
+| content | string (optional) | The content to be added by the transaction. |root
+│
+
+## File Structure
+
+```structure
+├── models
+│   ├── Block.ts
+│   ├── BlockData.ts
+│   ├── BlockTree.ts
+│   ├── Transaction.ts
+│   ├── TransactionPayload.ts
+│   ├── Interfaces
+│   │   ├── IBlock.ts
+│   │   ├── IBlockData.ts
+│   │   ├── IBlockTree.ts
+│   │   ├── ITransaction.ts
+│   │   ├── ITransactionPayload.ts
+│   │   └── index.ts
+│   └── index.ts
+└── index.ts
+```

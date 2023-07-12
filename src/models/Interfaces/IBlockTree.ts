@@ -45,13 +45,6 @@ export interface IBlockTree {
     getAllKnownChildren(blockId: string): IBlock[] | null;
 
     /**
-     * Synchronizes the blocktree with other blocktrees.
-     * @param {IBlockTree[]} otherBlockTrees - The other blocktrees to synchronize with.
-     * @returns {void}
-     */
-    synchronize(otherBlockTrees: IBlockTree[]): void;
-
-    /**
      * getter for genesis block
      * @returns {Iblock}
      */

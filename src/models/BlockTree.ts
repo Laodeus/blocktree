@@ -36,6 +36,5 @@ export class BlockTree implements IBlockTree {
         return blockChain;
     };
     getAllKnownChildren = (blockId: string): IBlock[] | null => null;
-    synchronize = (otherBlockTrees: IBlockTree[]): void => { };
     getGenesis = (): Block => this.blockList[0]
 }
