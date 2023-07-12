@@ -1,14 +1,15 @@
-import { IBlockData } from "./IBlockData";
+import { IBlockData } from "./Interfaces/IBlockData";
+import { ITransaction } from "./Interfaces/ITransaction";
 
 export class BlockData implements IBlockData {
-    title = "";
-    content = "";
-    author = "";
-    timestamp = "";
+    title: string;
+    transaction : ITransaction[];
+    author: string;
+    timestamp : string;
 
-    constructor(title: string, content: string, author: string) {
+    constructor(title: string, transaction : ITransaction[], author: string) {
         this.title = title;
-        this.content = content;
+        this.transaction = transaction;
         this.author = author;
         this.timestamp = Date.now().toString();
     }

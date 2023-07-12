@@ -1,20 +1,16 @@
-import { BlockTree } from "./models/BlockTree";
-import { Block } from "./models/Block";
 import { BlockData } from "./models/BlockData";
+import { BlockTree } from "./models/BlockTree";
+import { TransactionType } from "./models/Interfaces/ITransaction";
+import { Transaction } from "./models/Transaction";
+import { TransactionPayload } from "./models/TransactionPayload";
 
-const tree = new BlockTree(
-    new Block(
-        "Genesis",
-        new BlockData(
-            "Genesis block",
-            "Branch in.",
-            "Laodeus"
-        )
-    )
-);
 
-const block1 = tree.addBlock(tree.getGenesis().hash, new BlockData("secondBlock", "Branch Out", "Laodeus"));
-tree.addBlock(block1.hash, new BlockData("secondBlock", "Branch Out", "Laodeus"));
-tree.addBlock(block1.hash, new BlockData("secondBlock", "Branch Out2", "Laodeus"));
+const blockTree = new BlockTree([]);
 
-console.log(tree)
+
+const newBlockData1Transaction = new Transaction(TransactionType.ADD, new TransactionPayload(0,undefined,"ok"));
+const newBlockData1 = new BlockData("add first block",[newBlockData1Transaction],"Laodeus")
+
+blockTree.addBlock("",newBlockData1);
+
+console.log(JSON.stringify(blockTree))

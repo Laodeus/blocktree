@@ -1,3 +1,5 @@
+import { ITransaction } from './ITransaction'
+
 /**
  * Data associated with a block.
  * @interface
@@ -9,7 +11,7 @@
 
 export interface IBlockData {
     title: string;
-    content: string;
+    transaction : ITransaction[];
     author: string;
     timestamp: string;
 }

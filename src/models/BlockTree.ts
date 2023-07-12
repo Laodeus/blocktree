@@ -1,17 +1,15 @@
 import { Block } from "./Block";
 import { BlockData } from "./BlockData";
 
-import { IBlockData } from "./IBlockData";
-import { IBlock } from "./IBlock";
-import { IBlockTree } from "./IBlockTree";
+import { IBlockData } from "./Interfaces/IBlockData";
+import { IBlock } from "./Interfaces/IBlock";
+import { IBlockTree } from "./Interfaces/IBlockTree";
 
 
 export class BlockTree implements IBlockTree {
-    genesisBlock = new Block("genesis", new BlockData("", "", ""));
-    blockList: Block[] = [];
-    constructor(block: Block) {
-        this.genesisBlock = block;
-        this.blockList.push(this.genesisBlock);
+    blockList :Block[];
+    constructor(blockList :Block[]) {
+        this.blockList = blockList;
     }
 
 
@@ -26,6 +24,7 @@ export class BlockTree implements IBlockTree {
         return found || this.getGenesis();
     };
     verifyIntegrity = (): boolean => true;
+    
     getBlockChainToGenesis = (blockId: string): Block[] => {
         const blockChain: Block[] = [];
         let currentBlock = this.getBlockById(blockId);
@@ -39,5 +38,5 @@ export class BlockTree implements IBlockTree {
     };
     getAllKnownChildren = (blockId: string): IBlock[] | null => null;
     synchronize = (otherBlockTrees: IBlockTree[]): void => { };
-    getGenesis = (): Block => this.genesisBlock
+    getGenesis = (): Block => this.blockList[0]
 }

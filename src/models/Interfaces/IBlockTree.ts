@@ -7,7 +7,6 @@ import { IBlockData } from "./IBlockData";
  * @property {IBlock} genesisBlock - The first block in the blocktree.
  */
 export interface IBlockTree {
-    genesisBlock: IBlock;
     blockList : IBlock[]
 
     /**
