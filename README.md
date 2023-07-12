@@ -18,12 +18,7 @@ npm install
 
 how to use
 
-// Import required classes and enums from the BlockTree module
-import { BlockData } from "blocktree/models/BlockData";
-import { BlockTree } from "blocktree/models/BlockTree";
-import { TransactionType } from "blocktree/models/Interfaces/ITransaction";
-import { Transaction } from "blocktree/models/Transaction";
-import { TransactionPayload } from "blocktree/models/TransactionPayload";
+
 
 ```javascript
 // Create a new BlockTree instance
