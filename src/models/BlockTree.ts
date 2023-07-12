@@ -23,7 +23,6 @@ export class BlockTree implements IBlockTree {
         return found || this.getGenesis();
     };
 
-
     verifyIntegrity = (): boolean => true;
     
     getBlockChainToGenesis = (blockId: string): Block[] => {
@@ -55,6 +54,7 @@ export class BlockTree implements IBlockTree {
         return children.length ? children : null;
     };
 
+    getGenesis = (): Block => this.blockList[0];
 
-    getGenesis = (): Block => this.blockList[0]
+
 }
